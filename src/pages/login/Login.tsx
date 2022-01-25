@@ -1,9 +1,9 @@
 import { useState } from "react";
 import LoginContainer from "./login.style";
-import BrandLogo from "../assets/images/Brand.png";
+import BrandLogo from "../../assets/images/Brand.png";
 import { Button } from "antd";
-import SendingCode from "./components/step-sending-code/sending-code";
-import Free from "./components/step-free/free";
+import SendingCode from "../login/components/step-sending-code/sending-code";
+import Free from "../login/components/step-free/free";
 import { notification } from "antd";
 import { MainAlert } from "./login.style";
 import "antd/dist/antd.css";
@@ -52,9 +52,11 @@ const Login = () => {
         ) : (
           <SendingCode setStatus={setStatus} free={steps.free} value={value} />
         )}
-        <Button onClick={handleOnClick} loading={isLoading} disabled={isLoading ? true : false} className="send-btn">
-          {status === steps.free ? "ارسال کد" : "ورود"}
-        </Button>
+        {status === steps.free? (<Button onClick={handleOnClick} loading={isLoading} disabled={isLoading ? true : false} className="send-btn">
+          ارسال کد
+        </Button>) : (<Button loading={isLoading} disabled={isLoading ? true : false} className="send-btn">
+          ورود
+        </Button>)}
       </div>
     </LoginContainer>
   );

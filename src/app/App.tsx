@@ -1,7 +1,6 @@
 import React from 'react';
 import GlobalStyles from '../assets/styles/style';
-import SendingCode from '../pages/components/step-sending-code/sending-code';
-import Login from '../pages/Login';
+import Login from '../pages/login/Login';
 
 
 function App() {

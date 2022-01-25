@@ -58,10 +58,13 @@ const LoginContainer = styled.div`
     direction: ltr;
     padding: 2px 0 2px 8px;
     font-family: "IRANSansB";
+    letter-spacing: 3px;
+    font-size: 14px;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
+      -moz-appearance: none;
       margin: 0;
     }
 
