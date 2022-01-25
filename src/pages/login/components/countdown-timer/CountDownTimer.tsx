@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { CountDownContainer } from "./count-down-timer.style";
 
 const CountDownTimer = () => {
-  const [minutes, setMinutes] = useState(2);
-  const [seconds, setSeconds] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [minutes, setMinutes] = useState<number>(2);
+  const [seconds, setSeconds] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     let interval = setInterval(() => {

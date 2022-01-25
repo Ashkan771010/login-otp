@@ -1,12 +1,13 @@
+import { ChangeEvent, FormEvent } from "react";
 import { freeIProps } from "../inerfaces";
 
 const Free: React.FC<freeIProps> = (props) => {
     let { value, setValue } = props;
-    const handleOnChnage = (e: any) => {
+    const handleOnChnage = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)
     }
-    const handleOnWheel = (e: any) => {
-        e.target.blur();
+    const handleOnWheel = (e: FormEvent<HTMLInputElement>) => {
+        e.currentTarget.blur();
     }
 
     return (
@@ -18,7 +19,7 @@ const Free: React.FC<freeIProps> = (props) => {
           value={value}
           onWheelCapture={handleOnWheel}
           onChange={handleOnChnage}
-          onInput={(e: any) => (e.target.value = e.target.value.slice(0, 11))}
+          onInput={(e: FormEvent<HTMLInputElement>) => (e.currentTarget.value = e.currentTarget.value.slice(0, 11))}
         />
       </>
     );
