@@ -40,7 +40,7 @@ const CountDownTimer = () => {
     >
       <div className="resend-code">
         <p>
-          ارسال مجدد کد بعد از{" "}
+          ارسال مجدد کد بعد از
           <span>
             {minutes}:{timerSeconds}
           </span>

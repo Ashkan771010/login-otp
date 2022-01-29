@@ -3,9 +3,10 @@ import { Button } from "antd";
 import { sendingIProps } from "../inerfaces";
 import CountDownTimer from "../countdown-timer/CountDownTimer";
 
-const elemRefs: any[] = [];
+const elemRefs: any = [];
 
-const autoTab = (e: any) => {
+const autoTab = (e: any
+  ) => {
   const BACKSPACE_KEY = 8;
   let tabindex = e.currentTarget.getAttribute("data-index") || 0;
   tabindex = Number(tabindex);
@@ -63,7 +64,6 @@ const SendingCode: React.FC<sendingIProps> = (props) => {
           type="number"
           data-index={0}
           ref={ref1}
-          maxLength={1}
           onWheelCapture={handleOnWheel}
           onKeyUp={autoTab}
           onInput={handleOnInput}
@@ -73,7 +73,6 @@ const SendingCode: React.FC<sendingIProps> = (props) => {
           type="number"
           data-index={1}
           ref={ref2}
-          maxLength={1}
           onWheelCapture={handleOnWheel}
           onKeyUp={autoTab}
           onInput={handleOnInput}
@@ -83,7 +82,6 @@ const SendingCode: React.FC<sendingIProps> = (props) => {
           type="number"
           data-index={2}
           ref={ref3}
-          maxLength={1}
           onWheelCapture={handleOnWheel}
           onKeyUp={autoTab}
           onInput={handleOnInput}
@@ -93,7 +91,6 @@ const SendingCode: React.FC<sendingIProps> = (props) => {
           type="number"
           data-index={3}
           ref={ref4}
-          maxLength={1}
           onWheelCapture={handleOnWheel}
           onKeyUp={autoTab}
           onInput={handleOnInput}
