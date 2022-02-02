@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-import IRANSans from "../fonts/iranSans/IRANSansWeb.ttf";
-import IRANSansB from "../fonts/iranSans/IRANSansWeb_Bold.ttf";
+import Vazir from "../fonts/vazir/Vazir-Regular-FD.woff";
+import VazirB from "../fonts/vazir/Vazir-Bold-FD.woff"
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -15,15 +15,15 @@ const GlobalStyles = createGlobalStyle`
     }
 
     @font-face {
-        font-family: "IRANSans";
-        src: url(${IRANSans});
+        font-family: "Vazir";
+        src: url(${Vazir});
         font-weight: normal;
         font-display: auto;
     }
 
     @font-face {
-        font-family: "IRANSansB";
-        src: url(${IRANSansB});
+        font-family: "VazirB";
+        src: url(${VazirB});
         font-weight: bold;
         font-display: auto;
     }

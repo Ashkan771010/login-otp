@@ -1,11 +1,12 @@
 import { Button } from "antd";
 import { useEffect, useState } from "react";
 import { CountDownContainer } from "./count-down-timer.style";
+import { IProps } from "./interface";
 
-const CountDownTimer = () => {
+const CountDownTimer: React.FC<IProps> = (props) => {
+  const { isLoading, setIsLoading } = props;
   const [minutes, setMinutes] = useState<number>(2);
   const [seconds, setSeconds] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     let interval = setInterval(() => {

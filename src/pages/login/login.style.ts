@@ -6,7 +6,7 @@ interface IProps {
 }
 
 export const MainAlert = styled(Alert)`
-  font-family: "IRANSansB";
+  font-family: "VazirB";
   padding: 8px 0;
 
   .ant-alert-message {
@@ -43,49 +43,17 @@ const LoginContainer = styled.div`
     }
   }
 
-  .login-title {
-    font-family: "IRANSansB";
-    font-size: 16px;
-    margin-top: 40px;
-  }
-
-  .phone-number {
-    width: 70%;
-    height: 35px;
-    margin-top: 25px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-    direction: ltr;
-    padding: 2px 0 2px 8px;
-    font-family: "IRANSansB";
-    letter-spacing: 3px;
-    font-size: 14px;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      margin: 0;
-    }
-
-    &:focus {
-      outline: none;
-      border: 1px solid #41e63c;
-      box-shadow: 0 0 10px rgba(65, 230, 60, 0.7);
-    }
-  }
-
   .send-btn {
     background-color: white;
-    margin-top: 50px;
+    margin-top: 30px;
     border: 1px solid #41e63c;
     width: 70%;
     padding: 3px 0;
-    font-family: "IRANSansB";
+    font-family: "VazirB";
     border-radius: 5px;
     color: #41e63c;
     transition: all 0.4s ease;
-    font-size: 15px;
+    font-size: 16px;
     cursor: ${(props: IProps) => (props.Cursor ? "default" : "pointer")};
     direction: ltr;
     pointer-events: ${(props: IProps) => (props.Cursor ? "none" : "auto")};
@@ -96,68 +64,6 @@ const LoginContainer = styled.div`
     }
   }
 
-  .send-code-conteiner {
-    width: 90%;
-    margin-top: 38px;
-    display: flex;
-    p {
-      font-family: "IRANSansB";
-      padding: 5px 0;
-
-      span {
-        color: red;
-      }
-    }
-
-    .change-phone-btn {
-      border: 0;
-      background-color: #e6e6e6;
-      cursor: pointer;
-      color: #31ba2d;
-      font-family: "IRANSans";
-      font-size: 15px;
-      margin-right: 20px;
-
-      span {
-        text-decoration: underline;
-        text-decoration-color: #31ba2d;
-      }
-    }
-  }
-
-  .input-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    direction: ltr;
-
-    input {
-      width: 50px;
-      height: 50px;
-      background-color: #e6e6e6;
-      text-align: center;
-      border-top: 0;
-      border-right: 0;
-      border-left: 0;
-      border-bottom: 1px solid black;
-      margin-right: 15px;
-      font-family: "IRANSansB";
-      font-size: 18px;
-      -webkit-appearance: none;
-      -moz-appearance: textfield;
-
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      &:focus {
-        outline: none;
-        border-bottom: 1px solid #41e63c;
-      }
-    }
-  }
 `;
 
 export default LoginContainer;

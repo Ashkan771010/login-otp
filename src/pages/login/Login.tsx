@@ -1,32 +1,76 @@
 import { useState } from "react";
+import { CheckMobileNumber } from "../../utils/check-mobile";
+import { LoginSteps } from "./login-constant";
 import LoginContainer from "./login.style";
 import BrandLogo from "../../assets/images/Brand.png";
 import { Button } from "antd";
-import SendingCode from "../login/components/step-sending-code/sending-code";
-import Free from "../login/components/step-free/free";
+import SendingCode from "./components/step-sending-code/SendingCode";
+import Free from "./components/step-free/Free";
 import { notification } from "antd";
 import { MainAlert } from "./login.style";
 import "antd/dist/antd.css";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const steps = {
-    free: 0,
-    sendingCode: 1,
-  };
+const Login = (props: any) => {
+  const { auth, setAuth } = props;
   const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState(steps.free);
-  const [value, setValue] = useState("");
-  const regex = /^09[0|1|2|3|9][0-9]{8}$/;
+  const [status, setStatus] = useState(LoginSteps.free);
+  const [inputValue, setInputValue] = useState("");
+  const [codeInputs, setCodeInputs] = useState({
+    input1: "",
+    input2: "",
+    input3: "",
+    input4: "",
+  });
+  const navigate = useNavigate();
+
+  const handleCodeInput = (e: any) => {
+    const value = e.target.value;
+    setCodeInputs({
+      ...codeInputs,
+      [e.target.name]: value,
+    });
+  };
 
   const handleStatus = () => {
-    setStatus(steps.sendingCode);
-    setIsLoading(false)
-  }
+    if(status === LoginSteps.sendingCode) {
+      setIsLoading(false)
+    }
+    setIsLoading(true);
+    setTimeout(() => {
+      setStatus(LoginSteps.sendingCode);
+      setIsLoading(false);
+    }, 5000);
+  };
 
   const handleOnClick = () => {
-    if (value.match(regex)) {
-      setIsLoading(true)
-      setTimeout(handleStatus, 5000);
+    if (status === LoginSteps.sendingCode) {
+      // setIsLoading(false)
+      if (
+        codeInputs.input1.length > 0 &&
+        codeInputs.input2.length > 0 &&
+        codeInputs.input3.length > 0 &&
+        codeInputs.input4.length > 0
+      ) {
+        setTimeout(() => {
+          navigate("/home");
+          setAuth(true);
+        }, 3000)
+      }else {
+         notification.open({
+           message: (
+             <MainAlert
+               message="لطفا کد را درست وارد نمایید."
+               type="error"
+               showIcon
+             />
+           ),
+           duration: 3,
+         });
+      }
+    }
+    if (CheckMobileNumber(inputValue)) {
+      handleStatus();
     } else {
       notification.open({
         message: (
@@ -47,16 +91,31 @@ const Login = () => {
         <div className="image-container">
           <img src={BrandLogo} alt="Company Logo" />
         </div>
-        {status === steps.free ? (
-          <Free value={value} setValue={setValue} />
+        {status === LoginSteps.free ? (
+          <Free
+            value={inputValue}
+            setValue={setInputValue}
+            isLoading={isLoading}
+          />
         ) : (
-          <SendingCode setStatus={setStatus} free={steps.free} value={value} />
+          <SendingCode
+            setStatus={setStatus}
+            free={LoginSteps.free}
+            inputValue={inputValue}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            handleCodeInput={handleCodeInput}
+            codeInputs={codeInputs}
+          />
         )}
-        {status === steps.free? (<Button onClick={handleOnClick} loading={isLoading} disabled={isLoading ? true : false} className="send-btn">
-          ارسال کد
-        </Button>) : (<Button loading={isLoading} disabled={isLoading ? true : false} className="send-btn">
-          ورود
-        </Button>)}
+        <Button
+          onClick={handleOnClick}
+          loading={isLoading}
+          disabled={isLoading}
+          className="send-btn"
+        >
+          {status === LoginSteps.free ? "ارسال کد" : "ورود"}
+        </Button>
       </div>
     </LoginContainer>
   );
